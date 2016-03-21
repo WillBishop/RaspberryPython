@@ -1,6 +1,6 @@
 #############################################################################
 ###                                                                       ###
-### A regeidt and CMD unblocker in Python.                                ###
+### A Registry Editor and CMD unblocker in Python.                        ###
 ### Copyright (C) 2016  lenku                                             ###
 ###                                                                       ###
 ### This program is free software: you can redistribute it and/or modify  ###
