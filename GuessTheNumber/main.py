@@ -18,11 +18,11 @@
 ###                                                                       ###
 #############################################################################
 
-# IMPORTS
+### IMPORTS
 import random
 
-# VARIABLES
-## No variables
+### VARIABLES
+# No variables
 
 # intro
 print('Welcome! Who might you be?')
