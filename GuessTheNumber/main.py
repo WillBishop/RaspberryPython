@@ -1,7 +1,7 @@
 #############################################################################
 ###                                                                       ###
 ### A number guessing game in Python.                                     ###
-### Copyright (C) 2016  lenku                                             ###
+### Copyright (C) 2017 lenku                                              ###
 ###                                                                       ###
 ### This program is free software: you can redistribute it and/or modify  ###
 ### it under the terms of the GNU General Public License as published by  ###
@@ -25,15 +25,13 @@ import random
 # No variables
 
 # intro
-print('Welcome! Who might you be?')
 # get user's desired name
-username = input()
-print()
-print('Well, ' + username + ', we are going to play a guessing game.')
+username = input('Welcome! Who might you be?\n')
+print('\nWell %s, we are going to play a guessing game. You will type in 2 numbers, and that will be the guessing range.' % username)
 
 # begin playing
 play = 'y'
-while play == 'y' or play == 'yes':
+while play[0] == 'y':
 
     print()
 
@@ -46,7 +44,7 @@ while play == 'y' or play == 'yes':
             break
         # handle string to integer exception
         except ValueError:
-            print('That\'s not a number... Try again.')
+            print("That's not a number... Try again.")
 
     # get second number
     while True:
@@ -56,65 +54,56 @@ while play == 'y' or play == 'yes':
             break
         # handle string to integer exception
         except ValueError:
-            print('That\'s not a number... Try again.')
+            print("That's not a number... Try again.")
 
     print()
 
     # pick random number between 2 numbers chosen by user
     if number1 < number2:
         number = random.randint(number1, number2)
-        print('Okay, ' + username + ', I am thinking of a number.')
-        print('It is between ' + str(number1) + ' and ' + str(number2) + '.')
+        print('Okay, %s, I am thinking of a number.\nIt is between %d and %d.' % (username, number1, number2))
     else:
         number = random.randint(number2, number1)
         print('Okay, ' + username + ', I am thinking of a number.')
         print('It is between ' + str(number2) + ' and ' + str(number1) + '.')
 
-    print()
 
     # allow user to guess as long as the number of guesses is no more than 5
     while guesses < 5:
         try:
-            print('Take a guess:')
+            print('\nTake a guess:')
             guess = int(input())
             guesses += 1
             if guess > number:
-                print('Your guess is too high.')
+                print('\nYour guess is too high.\nYou have %d guesses left!' % (5 - guesses))
             elif guess < number:
-                print('Your guess is too low.')
+                print('\nYour guess is too low.\nYou have %d guesses left!' % (5 - guesses))
             # if the guess was equal to the number
             else:
                 break
         # handle string to integer exception
         except ValueError:
-            print('That\'s not a number... Try again.')
-
-    print()
+            print("That's not a number... Try again.")
 
     # if the user's guess was correct
     if guess == number:
-        print('Congratulations, ' + username + '!')
+        print('\nCongratulations, %s!' % username)
         if guesses != 1:
-            print('You guessed the number in ' + str(guesses) + ' guesses!')
+            print('You guessed the number in %d guesses!' % guesses)
         else:
             print('You guessed the number in 1 guess!')
     # if the user did not guess the number
     else:
-        print('Your 5 guesses are up and you didn\'t guess the number...')
-        print('Better luck next time!')
+        print("\nYour 5 guesses are up and you didn't guess the number...\nThe number was %d!\nBetter luck next time!" % number)
 
     # ask to play again
     while True:
-        print('Would you like to play again? (yes/no)')
+        print('\nWould you like to play again? (yes/no)')
         # set input to lowercase
         play = input().lower()
-        if play != 'y' and play != 'yes' and play != 'n' and play != 'no':
-            print('That\'s not the answer I\'m looking for...')
+        if play[0] != 'y' and play[0] != 'n':
+            print("That's not the answer I'm looking for...")
         else:
             break
 
-# exit
-print()
-
-print('Thank you for playing, ' + username + '!')
-print('See you next time!')
+print('\nThank you for playing, %s\nSee you next time!' % username)
